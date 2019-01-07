@@ -1,0 +1,18 @@
+
+	/* 차후 수정이 필요함  */
+	section div {
+		font-family: 'Open Sans';
+		font-style: normal;
+		text-align: center;
+		position: relative;
+		top: 50%;  
+		transform: translateY(-50%);
+	}
+
+	span {
+		font-size: 4em;
+		font-style: normal;
+		color: #ffffff;
+	}
+
+

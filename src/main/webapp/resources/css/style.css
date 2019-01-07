@@ -1,0 +1,107 @@
+@charset "EUC-KR";
+
+/* < link rel ="stylesheet " type ="text /css" href ="http: //fonts.googleapis.com/earlyaccess/hanna.css "> */ 
+
+#morning {
+   width: 400px;
+   height: 800px;
+   background: url("../img/IPhone_X.png");
+   background-size: contain;
+}
+
+#time {
+   margin-left: 50px;
+   font-family: 'Hanna', Sans-serif;
+}
+
+#date {
+   text-align: center;
+   font-family: 'Hanna', Sans-serif;
+}
+
+#clothes {
+   width: 300px;
+   height: 200px;
+   
+   margin: auto;
+   text-align: center;
+}
+
+#character {
+   width: 100px;
+   height: 150px;
+   padding-top: 40px;
+}
+
+#umb {
+   width: 50px;
+   height: 60px;
+   padding-bottom: 70px;
+}
+
+.dusttable {
+   border: 2px solid;
+   border-collapse: collapse;
+   height: 100px;
+   width: 300px;
+   align: center;
+   padding: 10px;
+   margin: auto;
+   font-family: 'Hanna', Sans-serif;
+}
+
+.font {
+   /* font-weight: bold; */
+   font-size: 12;
+   font-color: #A6A6A6; 
+}
+
+.fonttwo {
+   font-weight: bold;
+}
+
+/* /** 메인 테이블 style**/
+#tablemain {
+   width: 400px;
+   height: 2160px;
+}
+
+* 컨텐츠 테이블 style*
+.contable {
+   width: 400px;
+   height: 800px;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   padding: 30px;
+   background: url("../img/IPhone_X.png");
+   background-size: cover;
+}
+
+시간
+.top {
+   vertical-align: top;
+   width: 10px;
+   height: 10px;
+}
+
+* clothes table 속성 *
+.clotable {
+   height: 100px;
+   border: 2px solid;
+   width: 100%;
+   height: 80%;
+   padding: 10px;
+   font-size: 20px;
+}
+
+미세먼지
+.dusttable {
+   border: 2px solid;
+   border-collapse: collapse;
+   height: 100;
+   width: 100%;
+   align: center;
+   padding: 10px;
+}
+*
+/
