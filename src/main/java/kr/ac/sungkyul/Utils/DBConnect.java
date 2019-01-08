@@ -17,7 +17,7 @@ public class DBConnect {
 
 	// Connection 객체를 반환해 주는 메소드
 	public static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "javajava", "javajava");
+		return DriverManager.getConnection("jdbc:oracle:thin:@220.67.115.239:1521:xe", "javajava", "javajava");
 	}
 
 	// 자원 반환 - Connection, PreparedStatemonet, ResultSet

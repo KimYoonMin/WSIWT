@@ -21,7 +21,7 @@
 
 			document.getElementById("latitude").value = latitude;
 			document.getElementById("longitude").value = longitude;
-			document.f.submit();
+			/* document.f.submit(); */
 
 		}
 		;
