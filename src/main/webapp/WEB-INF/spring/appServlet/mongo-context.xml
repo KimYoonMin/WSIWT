@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 	<mongo:db-factory
 		id="mongoDbFactory"
-		host="172.16.96.11"
+		host="220.67.115.239"
 		port="27017"
 		dbname="ojs"
 	/>

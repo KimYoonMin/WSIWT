@@ -32,7 +32,12 @@ public class WeatherDAO {
 	private String fixedParam = "&numOfRows=300&_type=json";
 	private List<Integer> loopVal = Arrays.asList(12, 9, 11, 10, 11, 9, 11, 9);
 	private List<String> baseTimeList = Arrays.asList("0200", "0500", "0800", "1100", "1400", "1700", "2000", "2300");
+	private List<String> nxList = Arrays.asList("60", "98", "89", "55", "58", "67", "60", "73", "69", "68", "63", "51",
+			"89", "91", "52");
+	private List<String> nyList = Arrays.asList("127", "76", "90", "124", "74", "100", "120", "134", "107", "100", "89",
+			"67", "91", "77", "38");
 	private String resultMsg;
+	private WeatherDTO preDTO = null;
 
 	public void parsingAndSaving(Date date) {
 		try {
@@ -42,27 +47,33 @@ public class WeatherDAO {
 			String base_date = ymdFormat.format(date); // yyyyMMdd
 			String nowHour = hourFormat.format(date); // HH
 			// 위치는 geoAPI로
-			int nx = 55;
-			int ny = 127;
+//	         int nx = 55;
+//	         int ny = 127;
 			///////////////////////////
+
 			for (int k = 0; k < 8; k++) {
-				int basicIndex = Integer.parseInt(nowHour) / 3;
-				int loopIndex = (basicIndex + k) % 8;
-				String base_time = baseTimeList.get(loopIndex);
-				System.out.println("측정시간 =" + base_time);
-				JSONArray items = getWeatherAPI(base_date, base_time, nx, ny);
-				if ("OK".equals(resultMsg)) {
-					analysisJsonArray(items, loopIndex, base_date);
+				for (int m = 0; m < nxList.size(); m++) {
+					int basicIndex = Integer.parseInt(nowHour) / 3;
+					int loopIndex = (basicIndex + k) % 8;
+					String base_time = baseTimeList.get(loopIndex);
+					System.out.println("측정시간 =" + base_time);
+					System.out.println("측정위치" + nxList.get(m) + "///" + nyList.get(m));
+					JSONArray items = getWeatherAPI(base_date, base_time, nxList.get(m), nyList.get(m));
+					if ("OK".equals(resultMsg)) {
+						analysisJsonArray(items, loopIndex, base_date);
+						preDTO = null;
+					}
+					resultMsg = null;
 				}
-				resultMsg = null;
 			}
+
 			////////////////////////////////////////
 		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
 
-	private JSONArray getWeatherAPI(String base_date, String base_time, int nx, int ny)
+	private JSONArray getWeatherAPI(String base_date, String base_time, String nx, String ny)
 			throws UnsupportedEncodingException, IOException {
 		URL url = new URL(host + "ServiceKey=" + key + "&base_date=" + base_date + "&base_time=" + base_time + "&nx="
 				+ nx + "&ny=" + ny + "&pageNo=1" + fixedParam);
@@ -107,18 +118,17 @@ public class WeatherDAO {
 		mongoTemplate.insert(weatherDTO, "weather");
 		System.out.println("weather to save to MongoDB");
 	}
+
 	public WeatherDTO findWeather(String nx, String ny) {
-		WeatherDTO dto=null;
-		Criteria criteria=new Criteria("nx");
-		criteria.is(nx).and("ny").is(ny);
-		Query query=new Query(criteria);
-		dto=mongoTemplate.findOne(query, WeatherDTO.class,"weather");
-		System.out.println(nx+":"+ny);
+		WeatherDTO dto = null;
+		Criteria criteria = new Criteria("nx");
+		criteria.is("60").and("ny").is("127");
+		Query query = new Query(criteria);
+		dto = mongoTemplate.findOne(query, WeatherDTO.class, "weather");
+		System.out.println(nx + ":" + ny);
 		System.out.println(dto.getFcstDate());
 		System.out.println(dto.getFcstTime());
 		System.out.println(dto.getCategory().get("pop"));
 		return dto;
 	}
 }
-
-

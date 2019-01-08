@@ -31,14 +31,14 @@
 	<h1><%=date%></h1>
 </div>
 <div id="clothes" style="background: url(<%=background %>); background-size: contain;">
-	<jsp:include page="../breakfast/clothes.jsp" />
+	<jsp:include page="/WEB-INF/views/breakfast/clothes.jsp" />
 
 </div>
 <br><br>
 <div>
-	<jsp:include page="../breakfast/dust.jsp" />
+	<jsp:include page="/WEB-INF/views/breakfast/dust.jsp" />
 </div>
 <br><br>
 <div>
-	<jsp:include page="../breakfast/weather.jsp" />
+	<jsp:include page="/WEB-INF/views/breakfast/weather.jsp" />
 </div>
