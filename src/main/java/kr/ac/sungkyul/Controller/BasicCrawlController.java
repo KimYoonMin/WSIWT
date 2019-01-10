@@ -1,7 +1,7 @@
 /**
  * https://github.com/yasserg/crawler4j 의 샘플 코드를 약간 수정한 것임
  */
-package kr.ac.sungkyul.Controller.Impl;
+package kr.ac.sungkyul.Controller;
 
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;

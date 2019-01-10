@@ -17,10 +17,14 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.context.WebApplicationContext;
 
 import kr.ac.sungkyul.Model.DTO.DustDTO;
+import kr.ac.sungkyul.Model.DTO.LocationDTO;
+import kr.ac.sungkyul.Model.DTO.WeatherDTO;
 import kr.ac.sungkyul.Utils.JSONUtils;
 
 @Repository("dustDAO")
@@ -120,6 +124,23 @@ public class DustDAO {
 			}
 		}
 		return 0;
+	}
+	
+	public DustDTO findDust(LocationDTO dto) {
+		DustDTO ddto = null;
+		String getCity = dto.getCity().replace("도", "");
+		getCity = getCity.replace("특별시", "");
+		getCity = getCity.replace("광역시", "");
+		getCity = getCity.replace("특별자치시", "");		
+		Query query = new Query();
+		query.addCriteria(Criteria.where("sidoName").is(getCity));		
+		ddto = mongoTemplate.findOne(query, DustDTO.class, "dust");
+		System.out.println("getPm10Grade : "+ddto.getPm10Grade());
+		System.out.println("getPm10Value : "+ddto.getPm10Value());
+		System.out.println("getPm25Grade : "+ddto.getPm25Grade());
+		System.out.println("getPm25Value : "+ddto.getPm25Value());
+		
+		return ddto;
 	}
 
 }

@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import kr.ac.sungkyul.Model.DTO.InfoDTO;
 import kr.ac.sungkyul.Utils.DBConnect;
 
-public class InfoDAO implements InfoDAOImpl {
+public class InfoDAO{
 	Connection con;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	int overlap = 0;
 
-	@Override
+	
 	public boolean inputData(InfoDTO dto) {
 		try {
 			con = DBConnect.getConnection();
@@ -43,7 +43,7 @@ public class InfoDAO implements InfoDAOImpl {
 		return false;
 	}
 
-	@Override
+	
 	public ArrayList<InfoDTO> getArroundData(Double lat, Double lng) {
 		ArrayList<InfoDTO> list = new ArrayList<>();
 		try {

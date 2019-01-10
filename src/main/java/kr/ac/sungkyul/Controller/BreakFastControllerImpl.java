@@ -1,4 +1,4 @@
-package kr.ac.sungkyul.Controller.Impl;
+package kr.ac.sungkyul.Controller;
 
 import java.text.DecimalFormat;
 
@@ -10,22 +10,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.ac.sungkyul.Controller.Interface.BreakFastController;
+import kr.ac.sungkyul.Model.DAO.DustDAO;
 import kr.ac.sungkyul.Model.DAO.LocationDAO;
 import kr.ac.sungkyul.Model.DAO.WeatherDAO;
+import kr.ac.sungkyul.Model.DTO.DustDTO;
 import kr.ac.sungkyul.Model.DTO.LocationDTO;
 import kr.ac.sungkyul.Model.DTO.WeatherDTO;
 
 @Controller
-public class BreakFastControllerImpl implements BreakFastController{
+public class BreakFastControllerImpl{
 	/*@Autowired
 	private MongoService service;*/
 	@Autowired
 	private LocationDAO ldao;
 	@Autowired
 	private WeatherDAO wdao;
+	@Autowired
+	private DustDAO ddao;
 	
-	@Override
+	
 	@RequestMapping(value="/")
 	public ModelAndView expressAll(ModelAndView mav,Object ob) {
 		mav.setViewName("test");
@@ -49,7 +52,9 @@ public class BreakFastControllerImpl implements BreakFastController{
 		mav.addObject("lo",dto);
 		System.out.println("cont : "+dto.getNx()+":"+dto.getNy());
 		WeatherDTO wdto=wdao.findWeather(dto.getNx(), dto.getNy());
+		DustDTO ddto = ddao.findDust(dto);
 		mav.addObject("weather",wdto);
+		mav.addObject("dust",ddto);
 		/*service.find(Integer.parseInt(dto.getNx()), Integer.parseInt(dto.getNy()));*/
 		//return "home";
 		mav.setViewName("home");
