@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <table border="0" class="dusttable">
 	<tr align="center">
@@ -12,15 +12,15 @@
 	<tr>
 		<td align="center">
 			<c:choose>
-				<c:when test="${weather.category.SKY == 1}">¸¼À½</c:when>
-				<c:when test="${weather.category.SKY == 2}">±¸¸§Á¶±Ý</c:when>
-				<c:when test="${weather.category.SKY == 3}">±¸¸§¸¹À½</c:when>
-				<c:otherwise>Èå¸²</c:otherwise>
+				<c:when test="${weather.category.SKY == 1}">ë§‘ìŒ</c:when>
+				<c:when test="${weather.category.SKY == 2}">êµ¬ë¦„ì¡°ê¸ˆ</c:when>
+				<c:when test="${weather.category.SKY == 3}">êµ¬ë¦„ë§ŽìŒ</c:when>
+				<c:otherwise>íë¦¼</c:otherwise>
 			</c:choose>
 		</td>
 	</tr>
 	<tr>
-		<td align="center">°­¼öÈ®·ü : ${weather.category.POP}%</td>
+		<td align="center">ê°•ìˆ˜í™•ë¥  : ${weather.category.POP}%</td>
 	</tr>
 
 </table>

@@ -5,9 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
 import kr.ac.sungkyul.Model.DTO.InfoDTO;
 import kr.ac.sungkyul.Utils.DBConnect;
 
+@Repository
 public class InfoDAO{
 	Connection con;
 	PreparedStatement pstmt;
@@ -44,12 +47,14 @@ public class InfoDAO{
 	}
 
 	
-	public ArrayList<InfoDTO> getArroundData(Double lat, Double lng) {
+	public InfoDTO[] getArroundData(double lat, double lng) {
 		ArrayList<InfoDTO> list = new ArrayList<>();
 		try {
 			con = DBConnect.getConnection();
-			pstmt = con.prepareStatement("select * from info where (lat between " + lat + " and " + (lat + 0.001)
-					+ ") and (lng between " + lng + " and " + (lng + 0.01) + ")");
+			/*pstmt = con.prepareStatement("select * from info where (lat between " + lat + " and " + (lat + 0.001)
+					+ ") and (lng between " + lng + " and " + (lng + 0.01) + ")");*/
+			pstmt = con.prepareStatement("select * from info where lat=37.562773 and lng=126.9257723");
+			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				InfoDTO dto = new InfoDTO();
@@ -65,13 +70,16 @@ public class InfoDAO{
 				dto.setLng(rs.getDouble("lng"));
 				list.add(dto);
 			}
-			return list;
+			InfoDTO[] dto = new InfoDTO[list.size()];
+			list.toArray(dto);
+			return dto;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBConnect.close(con, pstmt, rs);
 		}
-		return list;
+		System.out.println("1");
+		return null;
 	}
 
 }

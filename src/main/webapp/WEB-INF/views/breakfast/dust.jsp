@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <link href="css/style.css" rel="stylesheet">
 <table border="0" class="dusttable">
    <tr>
@@ -9,9 +9,9 @@
    <tr align="center">
       <td rowspan="2" align="center" width="80"><img
          src="resources/img/good.png"></td>
-      <td align="center">ÁÁÀ½</td>
+      <td align="center">ì¢‹ìŒ</td>
       <td align="center">20</td>
    </tr>
    <tr>
-      <td align="center" colspan="2">¿À´ÃÀº °ø±â°¡ »óÄè!</td>
+      <td align="center" colspan="2">ì˜¤ëŠ˜ì€ ê³µê¸°ê°€ ìƒì¾Œ!</td>
 </table>

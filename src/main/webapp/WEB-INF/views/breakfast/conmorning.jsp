@@ -1,17 +1,17 @@
 <%@page import="java.util.Calendar"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+pageEncoding="utf-8"%>
 
 <% 
 	Calendar cal = Calendar.getInstance();
-	//½Ã°£
+	//ì‹œê°„
 	String time = (cal.get(Calendar.HOUR_OF_DAY)+":")+(cal.get(Calendar.MINUTE)+"");
-	//³¯Â¥
+	//ë‚ ì§œ
 	String date = (cal.get(Calendar.YEAR) + ". ") + (((cal.get(Calendar.MONTH) + 1)) + ". ")
 			+(cal.get(Calendar.DATE)+"."); 
 %>
 <%
-	//½Ã°£º° background
+	//ì‹œê°„ë³„ background
 	String background="";
 /* 	int hour = 3; */
 	int hour = cal.get(Calendar.HOUR_OF_DAY);

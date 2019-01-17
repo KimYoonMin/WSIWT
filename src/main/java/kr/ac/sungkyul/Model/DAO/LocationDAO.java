@@ -19,12 +19,15 @@ public class LocationDAO {
 	public LocationDTO match(String latitude, String longitude) {
 		LocationDTO dto=null;
 		Criteria criteria=new Criteria("latitude");
-		criteria.lte(Double.parseDouble(latitude)+0.01).gt(Double.parseDouble(latitude)-0.01);
+		//임시로 넣었다.
+		criteria.lte(Double.parseDouble("37.3799143")+0.01).gt(Double.parseDouble("37.3799143")-0.01);
 		System.out.println("latitude : "+latitude);
-		criteria.and("longitude").gt(Double.parseDouble(longitude)-0.01).lte(Double.parseDouble(longitude)+0.01);
-		System.out.println("longitude" + longitude);
+		//임시로 넣었다.
+		criteria.and("longitude").gt(Double.parseDouble("126.9286913")-0.01).lte(Double.parseDouble("126.9286913")+0.01);
+		System.out.println("longitude : " + longitude);
 		Query query=new Query(criteria);
 		dto=mongoTemplate.findOne(query, LocationDTO.class,"location");
+		System.out.println("dto : "+dto);
 		System.out.println(dto.getLatitude());
 		System.out.println(dto.getCity());
 		System.out.println(dto.getGu());

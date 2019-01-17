@@ -27,7 +27,7 @@ import kr.ac.sungkyul.Model.DTO.LocationDTO;
 import kr.ac.sungkyul.Model.DTO.WeatherDTO;
 import kr.ac.sungkyul.Utils.JSONUtils;
 
-@Repository("dustDAO")
+@Repository
 public class DustDAO {
 	@Autowired
 	private MongoTemplate mongoTemplate;

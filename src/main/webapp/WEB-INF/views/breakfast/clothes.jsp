@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%
-	//¿Âµµº° ¿Ê º¯È­
+	//ì˜¨ë„ë³„ ì˜· ë³€í™”
 	String clothImg = "";
 	int tem=-5;
   	switch((int)tem/3){

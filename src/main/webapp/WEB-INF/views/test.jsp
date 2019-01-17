@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+	
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
@@ -11,7 +13,7 @@
 		var output = document.getElementById("out");
 
 		if (!navigator.geolocation) {
-			output.innerHTML = "<p>»ç¿ëÀÚÀÇ ºê¶ó¿ìÀú´Â Áö¿À·ÎÄÉÀÌ¼ÇÀ» Áö¿øÇÏÁö ¾Ê½À´Ï´Ù.</p>";
+			output.innerHTML = "<p>ì‚¬ìš©ìì˜ ë¸Œë¼ìš°ì €ëŠ” ì§€ì˜¤ë¡œì¼€ì´ì…˜ì„ ì§€ì›í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.</p>";
 			return;
 		}
 
@@ -27,7 +29,7 @@
 		;
 
 		function error() {
-			output.innerHTML = "»ç¿ëÀÚÀÇ À§Ä¡¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.";
+			output.innerHTML = "ì‚¬ìš©ìì˜ ìœ„ì¹˜ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.";
 		}
 		;
 
@@ -35,13 +37,23 @@
 
 	}
 </script>
+
+<c:if test="${'success' eq crawl}">
+	<script type="text/javascript">
+		alert("crawl success");
+	</script>
+</c:if>
+
 <body>
 	<div id="out"></div>
-	<form id="form" name="f" action="home.do">
+	<form id="home" name="f" action="home.do">
 		<input type="text" name="latitude" id="latitude"> 
 		<input type="text" name="longitude" id="longitude"> 
-		<input type="submit" value="È®ÀÎ">
-
+		<input type="submit" value="í™•ì¸">
+	</form>
+	
+	<form id="crawl" name="c" action="crawl.do">
+		<input type="submit" value="crawl_start">
 	</form>
 </body>
 </html>
