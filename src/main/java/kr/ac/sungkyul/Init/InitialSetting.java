@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import kr.ac.sungkyul.Model.DAO.DustDAO;
 import kr.ac.sungkyul.Model.DAO.WeatherDAO;
 
+
 @Component
 public class InitialSetting implements InitializingBean{
 	@Autowired
@@ -34,8 +35,8 @@ public class InitialSetting implements InitializingBean{
 		ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(2);
 		Runnable dustTh = new ParsingDust(); 
 		Runnable weatherTh = new ParsingWeather(); 
-		executor.scheduleAtFixedRate(dustTh, 0, 1, TimeUnit.HOURS);
-		executor.scheduleAtFixedRate(weatherTh, 0, 3, TimeUnit.HOURS);
+		/*executor.scheduleAtFixedRate(dustTh, 0, 1, TimeUnit.HOURS);
+		executor.scheduleAtFixedRate(weatherTh, 0, 3, TimeUnit.HOURS);*/
 		
 	}
 	

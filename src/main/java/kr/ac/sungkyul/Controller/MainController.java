@@ -68,7 +68,12 @@ public class MainController{
 		System.out.println("cont : "+dto.getNx()+":"+dto.getNy());
 		WeatherDTO wdto=wdao.findWeather(dto.getNx(), dto.getNy());
 		DustDTO ddto = ddao.findDust(dto);
-		InfoDTO[] idto = idao.getArroundData(37.562773, 126.9257723);
+		InfoDTO[] idto = idao.getArroundData(60, 127);
+		for(InfoDTO dto_food : idto) {
+			System.out.println("dto_food.getName() : "+dto_food.getName());
+			System.out.println("dto_food.getImg() : "+dto_food.getImg());
+			System.out.println("dto_food.getTel() : "+dto_food.getTel());
+		}
 		System.out.println("idto : "+idto);
 		mav.addObject("weather", wdto);
 		mav.addObject("dust", ddto);
@@ -77,34 +82,6 @@ public class MainController{
 		//return "home";
 		mav.setViewName("home");
 		return mav;
-	}
-	
-	/*@RequestMapping(value="/crawl.do")
-	public ModelAndView crawl(ModelAndView mav, HttpServletRequest req) throws Exception {
-		File file = new File("C:/Crawl");
-		if(!(file.exists())){
-			file.mkdirs();
-		}
-		String crawlStorageFolder = "C:/Crawl";
-		int numberOfCrawlers = 10000;
-		CrawlConfig config = new CrawlConfig();
-		config.setCrawlStorageFolder(crawlStorageFolder);
-		config.setPolitenessDelay(10);
-		config.setMaxDepthOfCrawling(32766);
-		config.setMaxPagesToFetch(1000000000);
-		config.setIncludeBinaryContentInCrawling(false);
-		config.setResumableCrawling(false);
-		PageFetcher pageFetcher = new PageFetcher(config);
-		RobotstxtConfig robotstxtConfig = new RobotstxtConfig();
-		RobotstxtServer robotstxtServer = new RobotstxtServer(robotstxtConfig, pageFetcher);
-		CrawlController controller = new CrawlController(config, pageFetcher, robotstxtServer);
-		controller.addSeed("http://www.mangoplate.com");
-		BasicCrawler.configure(crawlStorageFolder);
-		controller.start(BasicCrawler.class, numberOfCrawlers);
-		mav.addObject("crawl_result", "success");
-		mav.setViewName("/");
-		return mav;
-	}*/
-	
+	}	
 	
 }

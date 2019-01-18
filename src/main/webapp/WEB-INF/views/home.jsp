@@ -1,15 +1,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <!--
-	* ìµì´ ìì±ì¼ : 2018.11.10
-	* ìì±ì : ì¡°ì¢ë¯¼
-	* ì²ë¦¬ ìì
-	 - web.xml ì¤ì 
-	  : ì¸ì½ë©(UTF-8)
-	 - controller (Annotation íì©)
-	  : BreakFastController ìì¹¨ 
-	  : LunchController ì ì¬
-	  : DinnerController ì ë
+	* 최초 작성일 : 2018.11.10
+	* 작성자 : 조종민
+	* 처리 작업
+	 - web.xml 설정
+	  : 인코딩(UTF-8)
+	 - controller (Annotation 활용)
+	  : BreakFastController 아침 
+	  : LunchController 점심
+	  : DinnerController 저녁
 	 - view(jsp, js, css, images)'s Path
 	  : webapp/resource/css 
 	  : webapp/resource/js 
@@ -17,7 +17,7 @@
 	  : webapp/WEB-INF/views/jspFile	  
 	 - context
 	  : servlet-context
-	    >> resources mapping ì¤ì  (css, js, images, ê·¸ ì¸)
+	    >> resources mapping 설정 (css, js, images, 그 외)
 	 - lib (maven)
 	  : json-simple
 	 
@@ -27,7 +27,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <head>
-<title>ìì¹¨ ì ì¬ ì ë</title>
+<title> What should I wear today��</title>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="css/full-page-scroll.css">
@@ -38,23 +38,17 @@
 <body>
 	<div id="main" class="scroll-container">
 		<section class="section1">
-			<div>			
+			<div>
 				<%@ include file="breakfast/conmorning.jsp"%>
-			미세먼지 수치 =${dust.pm10Value}	</br>
-			초 미세먼지 수치 =${dust.pm25Value}</br>
-			미세먼지 등급 =${dust.pm10Grade}</br>
-			초미세먼지 등급 =${dust.pm25Grade}
 			</div>
 		</section>
 		<section class="section2">
 			<div>
-				<%@ include file="recommend.jsp"%>
 				<%@ include file="lunch/lunchLay.jsp"%>
 			</div>
 		</section>
 		<section class="section3">
 			<div>
-				<%@ include file="recommend.jsp"%>
 				<%@ include file="dinner/dinnerLay.jsp"%>
 			</div>
 		</section>
@@ -63,6 +57,6 @@
 	<script src="js/full-page-scroll.js"></script>
 	<!-- one pagescroll js -->
 	<script src="js/scroll-anime.js"></script>
-	<!-- scroll ì´ëì ì°ì¸¡ dot íì -->
+	<!-- scroll 이동시 우측 dot 표시 -->
 </body>
 </html>

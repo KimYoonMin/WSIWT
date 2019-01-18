@@ -10,6 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import kr.ac.sungkyul.Model.DAO.InfoDAO;
+import kr.ac.sungkyul.Model.DAOImpl.InfoDAOImpl;
 import kr.ac.sungkyul.Model.DTO.InfoDTO;
 
 
@@ -17,7 +18,7 @@ import kr.ac.sungkyul.Model.DTO.InfoDTO;
 public class ParsingHTML {
 	public static void main(String[] args) {
 		List<InfoDTO> list = new ArrayList<InfoDTO>();
-		InfoDAO dao = new InfoDAO();
+		InfoDAO dao = new InfoDAOImpl();
 		String path = "C:/Crawl";
 		File dirFile = new File(path);
 		File[] fileList = dirFile.listFiles();

@@ -1,26 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+   pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<table border="0" class="dusttable">
-	<tr align="center">
-		<td rowspan="3" align="center" width="80"><img
-			src="resources/img/sun.png"></td>
-		<td align="center" class="font">${lo.city } ${lo.gu } ${lo.dong }</td>
-		<td rowspan="3" align="center" class="fonttwo">${weather.category.TMN} / ${weather.category.TMX }</td>
+<table border="1" id="dusttable">
+   <tr align="center">
+      <td rowspan="3" align="center" width="80"><c:choose>
+            <c:when test="${weather.category.SKY == 1}">
+               <img src="resources/img/sunny.png">
+            </c:when>
+            <c:when test="${weather.category.SKY == 2}">
+               <img src="resources/img/cloud.png">
+            </c:when>
+            <c:when test="${weather.category.SKY == 3}">
+               <img src="resources/img/rainy.png">
+            </c:when>
+            <c:otherwise>
+               <img src="resources/img/drop.png">
+            </c:otherwise>
+         </c:choose></td>
+      <td align="center" class="font">${lo.city }${lo.gu }${lo.dong }</td>
+      <td rowspan="3" align="center" class="fonttwo">
+         <%-- ${weather.category.TMN}
+         / ${weather.category.TMX } --%>10/0
+      </td>
 
-	</tr>
-	<tr>
-		<td align="center">
-			<c:choose>
-				<c:when test="${weather.category.SKY == 1}">ÎßëÏùå</c:when>
-				<c:when test="${weather.category.SKY == 2}">Íµ¨Î¶ÑÏ°∞Í∏à</c:when>
-				<c:when test="${weather.category.SKY == 3}">Íµ¨Î¶ÑÎßéÏùå</c:when>
-				<c:otherwise>ÌùêÎ¶º</c:otherwise>
-			</c:choose>
-		</td>
-	</tr>
-	<tr>
-		<td align="center">Í∞ïÏàòÌôïÎ•† : ${weather.category.POP}%</td>
-	</tr>
+   </tr>
+   <tr>
+      <td align="center"><c:choose>
+            <c:when test="${weather.category.SKY == 1}">∏º¿Ω</c:when>
+            <c:when test="${weather.category.SKY == 2}">±∏∏ß¡∂±›</c:when>
+            <c:when test="${weather.category.SKY == 3}">±∏∏ß∏π¿Ω</c:when>
+            <c:otherwise>»Â∏≤</c:otherwise>
+         </c:choose></td>
+   </tr>
+   <tr>
+      <td align="center">∞≠ºˆ»Æ∑¸ : ${weather.category.POP}%</td>
+   </tr>
 
 </table>

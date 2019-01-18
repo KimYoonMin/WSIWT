@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@page import="java.util.Calendar"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	//ì˜¨ë„ë³„ ì˜· ë³€í™”
+	//¿Âµµº° ¿Ê º¯È­
 	String clothImg = "";
 	int tem=-5;
   	switch((int)tem/3){
@@ -35,5 +37,31 @@
 	}  
 %>
 
-<img src=<%=clothImg %> id="character"/>
-<img src="resources/img/umbrella.png" id="umb"/>
+<%
+	//½Ã°£º° background
+	String background="";
+/* 	int hour = 3; */
+	Calendar cal = Calendar.getInstance();
+
+	int hour = cal.get(Calendar.HOUR_OF_DAY);
+	if(hour>=6 && hour<12){
+		background="'resources/img/morning.png'";
+	}else if(hour>=12 && hour<18){
+		background="'resources/img/afternoon.png'";
+	}else{
+		background="'resources/img/night.png'";
+	}
+%>
+<div id="clothes" style="background: url(<%=background %>); background-size: contain;">
+
+<img src=<%=clothImg%> id="character" />
+<c:choose>
+   <c:when test="${weather.category.POP >= 0 && weather.category.POP <= 40}">
+   </c:when>
+   <c:when test="${weather.category.POP >= 50 && weather.category.POP <= 100}">
+      <img src="resources/img/umbrella.png" id="umb">
+   </c:when>
+   <c:otherwise>no value
+   </c:otherwise>
+</c:choose>
+</div>
